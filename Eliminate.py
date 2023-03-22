@@ -63,6 +63,11 @@ while True:
         # Get a count of all of them
         count = len(dirs)
 
+        # Force validation if there is only one file in the destination and the user has already given one 'no'
+        if (count == 1 and nos >= 1):
+            msg_box = tk.messagebox.showinfo('File found', 'It\'s likely that "' + dirs[0] + '" is the file/folder in question.') # type: ignore
+            break
+
         # Iterate through the list
         for x in range(0, count):
             f = dirs[x]
